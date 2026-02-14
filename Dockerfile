@@ -1,5 +1,5 @@
 # Multi-stage build for optimization
-FROM python:3.11-slim as builder
+FROM python:3.11-slim AS builder
 
 WORKDIR /app
 
@@ -18,14 +18,10 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install runtime dependencies only
+# Install runtime dependencies only (removed X11/OpenGL libraries not needed for headless PDF processing)
 RUN apt-get update && apt-get install -y \
     libxml2 \
     libglib2.0-0 \
-    libsm6 \
-    libxext6 \
-    libxrender-dev \
-    libgl1-mesa-glx \
     libgthread-2.0-0 \
     curl \
     && rm -rf /var/lib/apt/lists/*
