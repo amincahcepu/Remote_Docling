@@ -45,14 +45,14 @@ USER appuser
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:${PORT:-8000}/health || exit 1
+    CMD curl -f http://localhost:${PORT:-8055}/health || exit 1
 
 # Expose port (configurable via environment)
-EXPOSE 8000
+EXPOSE 8055
 
 # Run with gunicorn for production
 CMD ["gunicorn", "docling_service:app", \
-    "--bind", "0.0.0.0:${PORT:-8000}", \
+    "--bind", "0.0.0.0:${PORT:-8055}", \
     "--workers", "${WORKERS:-2}", \
     "--worker-class", "uvicorn.workers.UvicornWorker", \
     "--timeout", "300", \

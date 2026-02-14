@@ -35,7 +35,7 @@ logger = structlog.get_logger()
 
 # Configuration from environment variables
 API_KEY = os.getenv("DOCLING_SERVICE_API_KEY", "")
-PORT = int(os.getenv("PORT", "8000"))
+PORT = int(os.getenv("PORT", "8055"))
 WORKERS = int(os.getenv("WORKERS", "2"))
 MAX_FILE_SIZE = int(os.getenv("MAX_FILE_SIZE", str(50 * 1024 * 1024)))  # 50MB default
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*").split(",")
